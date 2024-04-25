@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Bar Chart with D3.js</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+</head>
+
+<body>
+
+    <!-- Container for the bar chart -->
+    <div style="max-width:680px; width: 100%; " id="main-div1">
+        <div class="date-section">
+            <div><svg width="18" height="34" viewBox="0 0 18 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path opacity="0.5"
+                        d="M16.0625 1.86426L2.21397 15.7132C1.43294 16.4943 1.43296 17.7606 2.214 18.5416L16.0625 32.3901"
+                        stroke="black" stroke-width="3" stroke-linecap="round" />
+                </svg>
+            </div>
+            <h1 class="date-heading">March 2023</h1>
+            <div>
+                <svg width="18" height="34" viewBox="0 0 18 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path opacity="0.5"
+                        d="M1.80078 1.86426L15.6493 15.7132C16.4303 16.4943 16.4303 17.7606 15.6493 18.5416L1.80078 32.3901"
+                        stroke="black" stroke-width="3" stroke-linecap="round" />
+                </svg>
+
+            </div>
+        </div>
+        <svg id="bar-chart" width="600px" height="400px"></svg>
+        <div class="div2">
+            <div class="main-text-price">
+                <p>Today</p>
+                <div>$45.00</div>
+            </div>
+            <div class="main-text-price">
+                <p>Best</p>
+                <div>$90.00</div>
+            </div>
+            <div class="main-text-price2">
+                <p>Average</p>
+                <div>$65.00</div>
+            </div>
+        </div>
+
+    </div>
+    <!-- Container for the bar chart Weekly Overview-->
+    <div style="max-width:680px; width: 100%; " id="main-div2">
+        <div class="date-section2 ">
+
+            <div class="Weekly Overview">Weekly Overview</div>
+            <div class="date">
+                Apr 1 - Apr 7
+            </div>
+
+        </div>
+        <svg id="bar-chart2" width="680px" height="100%"></svg>
+
+
+    </div>
+    <script src="app2.js"></script>
+
+</body>
+
+</html>
