@@ -6,8 +6,6 @@ const data = [
   { yAxisvalue: 25, xAxisvalue: 14, color: "#FB975B" },
 ];
 
-
-
 // SVG dimensions
 const width = 680;
 const height = 320;
@@ -111,19 +109,18 @@ const margin2 = { top: 10, right: 10, bottom: 40, left: 10 };
 const svg2 = d3.select("#bar-chart2").attr("width", width2);
 
 // Extract unique xAxisvalues
-const xValues = data2.map((d) => d.xAxisvalue);
+const xValues2 = data2.map((d) => d.xAxisvalue);
 
 const xScale2 = d3
   .scaleBand()
-  .domain(xValues)
+  .domain(xValues2)
   .range([margin2.left, width2 - margin2.right])
-  .padding(0.7)
+  .padding(0.7);
 
 const yScale2 = d3
   .scaleLinear()
   .domain([0, d3.max(data2, (d) => d.yAxisvalue)])
   .range([height2 - margin2.bottom, margin2.top]);
-
 
 svg2
   .selectAll("rect")
@@ -133,7 +130,7 @@ svg2
   .attr("class", "bar")
   .attr("x", (d) => xScale2(d.xAxisvalue))
   .attr("y", (d) => yScale2(d.yAxisvalue))
-  .attr("width", "35px") 
+  .attr("width", "35px")
   .attr("height", (d) => height2 - margin2.bottom - yScale2(d.yAxisvalue))
   .attr("rx", 18)
   .attr("ry", 18)
@@ -146,14 +143,182 @@ svg2
   .append("g")
   .attr("transform", `translate(0, ${height2 - margin2.bottom})`)
   .call(xAxis2)
-  .selectAll("text") 
+  .selectAll("text")
   .style("fill", "#000000")
-  .style("font-size","28px")
+  .style("font-size", "28px")
   .style("opacity", 0.5)
-  .attr("dy", "42px") 
-  // .attr("transform", "rotate(-45)"); 
+  .attr("dy", "42px");
+// .attr("transform", "rotate(-45)");
 
 // Remove y-axis lines and ticks
 svg2.select(".domain").remove();
 svg2.selectAll(".tick line").remove();
 
+// -----------------------------------------chart 3
+const data3 = [
+  { yAxisvalue: "$80", xAxisvalue: 10, color: "#3A4DE9" },
+  { yAxisvalue: "$65", xAxisvalue: 11, color: "#3A4DE9" },
+  { yAxisvalue: "$60", xAxisvalue: 12, color: "#3A4DE9" },
+  { yAxisvalue: "$55", xAxisvalue: 13, color: "#3A4DE9" },
+  { yAxisvalue: "$50", xAxisvalue: 14, color: "#3A4DE9" },
+];
+
+// SVG dimensions
+const width3 = 680;
+const height3 = 360;
+const margin3 = { top: 10, right: 10, bottom: 60, left: 50 };
+
+// Create SVG element
+const svg3 = d3.select("#bar-chart3").attr("width", width3);
+// .attr("height", height3);
+
+// Create x scale
+const xScale3 = d3
+  .scaleBand()
+  .domain(data3.map((d) => d.xAxisvalue))
+  .range([margin3.left, width3 - margin3.right])
+  .padding(0.9);
+
+// Create y scale
+const yScale3 = d3
+  .scaleLinear()
+  .domain([40, d3.max(data3, (d) => parseFloat(d.yAxisvalue.replace("$", "")))])
+  .nice()
+  .range([height3 - margin3.bottom, margin3.top]);
+
+// Create bars
+svg3
+  .selectAll("rect")
+  .data(data3)
+  .enter()
+  .append("rect")
+  .attr("class", "bar")
+  .attr("x", (d) => xScale3(d.xAxisvalue))
+  .attr("y", (d) => yScale3(parseFloat(d.yAxisvalue.replace("$", ""))))
+  .attr("width", "12px")
+  .attr(
+    "height",
+    (d) =>
+      height3 -
+      margin3.bottom -
+      yScale3(parseFloat(d.yAxisvalue.replace("$", "")))
+  )
+  .attr("rx", 8)
+  .attr("ry", 8)
+  .attr("fill", (d) => d.color);
+
+// Add x-axis
+const xAxis3 = d3.axisBottom(xScale3);
+svg3
+  .append("g")
+  .attr("transform", `translate(0, ${height3 - margin3.bottom})`)
+  .call(xAxis3)
+  .selectAll(".tick text")
+  .attr("dy", "40px")
+  .style("opacity", 0.5)
+  .style("font-size", "28px"); // Set font size for x-axis text
+
+// Add y-axis
+const yAxis3 = d3
+  .axisLeft(yScale3)
+  .ticks(2) // Set the number of ticks
+  .tickFormat(d3.format("$,.0f")); // Format the tick values
+svg3
+  .append("g")
+  .attr("transform", `translate(${margin3.left}, 0)`)
+  .call(yAxis3)
+  .selectAll(".tick line")
+  .remove(); // Remove y-axis tick lines
+
+// Add horizontal gridlines
+const gridlines = svg3
+  .selectAll("line.horizontal-grid")
+  .data([40, 80, 60]) // Specify the values where you want to show gridlines
+  .enter()
+  .append("line")
+  .attr("class", "horizontal-grid")
+  .attr("x1", margin3.left)
+  .attr("y1", (d) => yScale3(d))
+  .attr("x2", width3 - margin3.right)
+  .attr("y2", (d) => yScale3(d))
+  .style("stroke", "gray")
+  .style("stroke-width", 0.7)
+  .style("stroke-dasharray", "5")
+  .style("opacity", 0.5);
+
+// Style the axis text
+svg3
+  .selectAll(".tick text")
+  .style("fill", "black")
+
+  .style("font-size", "24px"); // Set font size for y-axis text
+
+// Remove y-axis domain line
+svg3.selectAll(".domain").remove();
+svg3.selectAll(".tick line").remove();
+
+// --------------------------------------------------------------------------chart4
+const data4 = [
+  { yAxisvalue: 20, xAxisvalue: "Mon", color: "#E9ECF3" },
+  { yAxisvalue: 30, xAxisvalue: "Tu", color: "#394CFF" },
+  { yAxisvalue: 40, xAxisvalue: "Wed", color: "#E9ECF3" },
+  { yAxisvalue: 50, xAxisvalue: "Thu", color: "#394CFF" },
+  { yAxisvalue: 25, xAxisvalue: "Fri", color: "#394CFF" },
+  { yAxisvalue: 55, xAxisvalue: "Sat", color: "#E9ECF3" },
+  { yAxisvalue: 25, xAxisvalue: "Today", color: "#E9ECF3" },
+];
+
+// SVG dimensions
+const width4 = 680;
+const height4 = 320;
+const margin4 = { top: 10, right: 10, bottom: 40, left: 10 };
+
+// Create SVG element
+const svg4 = d3.select("#bar-chart4").attr("width", width4);
+
+// Extract unique xAxisvalues
+const xValues4 = data4.map((d) => d.xAxisvalue);
+
+const xScale4 = d3
+  .scaleBand()
+  .domain(xValues4)
+  .range([margin4.left, width4 - margin4.right])
+  .padding(0.3);
+
+const yScale4 = d3
+  .scaleLinear()
+  .domain([0, d3.max(data4, (d) => d.yAxisvalue)])
+  .range([height4 - margin4.bottom, margin4.top]);
+
+svg4
+  .selectAll("rect")
+  .data(data4)
+  .enter()
+  .append("rect")
+  .attr("class", "bar")
+  .attr("x", (d) => xScale4(d.xAxisvalue))
+  .attr("y", (d) => yScale4(d.yAxisvalue))
+  .attr("width", "68px")
+  .attr("height", (d) => height4 - margin4.bottom - yScale4(d.yAxisvalue))
+  .attr("rx", 18)
+  .attr("ry", 18)
+  .style("fill", (d) => d.color);
+
+// Add x-axis
+const xAxis4 = d3.axisBottom(xScale4);
+
+svg4
+  .append("g")
+  .attr("transform", `translate(0, ${height4 - margin4.bottom})`)
+  .call(xAxis4)
+  .selectAll("text")
+  .style("fill", "#000000")
+  .style("font-size", "28px")
+  .style("font-weight","500")
+  .style("opacity", 0.5)
+  .attr("dy", "42px");
+// .attr("transform", "rotate(-45)");
+
+// Remove y-axis lines and ticks
+svg4.select(".domain").remove();
+svg4.selectAll(".tick line").remove();

@@ -19,8 +19,40 @@ body{
   flex-direction: column;
  align-items: center;
 }
+#main-div3{
+  padding-top: 74px;
+  padding-bottom: 38px;
+  border: 2px solid fff;
+  border-radius: 30px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+ align-items: center;
+ padding-left: 31px;
+ padding-right: 55px;
+}
+#main-div4{
+  padding-top: 74px;
+  padding-bottom: 38px;
+  border: 2px solid fff;
+  border-radius: 30px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+ align-items: center;
+}
 #bar-chart2{
   margin-top: 127px;
+  
+}
+#bar-chart3{
+  margin-top: 87px;
+
+  
+}
+#bar-chart4{
+  margin-top: 69px;
+
   
 }
 .div2{
@@ -29,6 +61,21 @@ body{
   font-size: 26px;
   font-weight: 500;
   line-height: 31px;
+}
+.detail-btn{
+  max-width: 432px;
+  width: 100%;
+  margin-top: 32px;
+  background-color: #D5E5FF;
+  padding: 31px 169px;
+  font-size: 28px;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  color: #3A4DE9;
+  line-height: 33.8px;
+  border-radius: 10px;
+  border: #D5E5FF;
+  cursor: pointer;
 }
 .date-heading{
   font-family: "Inter", sans-serif;
@@ -53,6 +100,20 @@ body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 5px;
+}
+.date-section4{
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  line-height: 41px;
+  font-size: 34px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
 }
 .date{
   font-family: "Inter", sans-serif;
@@ -80,4 +141,16 @@ body{
 }
 p{
   opacity: 50%;
+}
+
+.monthhourmin{
+  font-family: "Inter", sans-serif;
+  font-size: 60px;
+  font-weight: 600;
+  line-height: 33.89px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
 }
