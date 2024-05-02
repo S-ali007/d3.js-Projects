@@ -1,0 +1,9 @@
+const data4 = [
+  { yAxisvalue: 20$, xAxisvalue: "Mon 10" },
+  { yAxisvalue: 30$, xAxisvalue: "Tu" 11},
+  { yAxisvalue: 40$, xAxisvalue: "Wed 12" },
+  { yAxisvalue: 50$, xAxisvalue: "Thu 13" },
+  { yAxisvalue: 25$, xAxisvalue: "Fri 14" },
+  { yAxisvalue: 55$, xAxisvalue: "Sat 15" },
+  { yAxisvalue: 25$, xAxisvalue: "Today 16"},
+];
