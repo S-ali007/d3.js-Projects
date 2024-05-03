@@ -193,9 +193,9 @@ async function draw2() {
 
   // Dimensions
   let dimensions = {
-    width: 1000,
-    height: 500,
-    margins: 50,
+    width: 600,
+    height: 450,
+    margins: 40,
   };
 
   dimensions.ctrWidth = dimensions.width - dimensions.margins * 2;
@@ -203,10 +203,12 @@ async function draw2() {
 
   // Draw Image
   const svg = d3
-    .select("#chart")
+    .select("#chart2")
     .append("svg")
+    .attr('class','svg2')
     .attr("width", dimensions.width)
-    .attr("height", dimensions.height);
+    .attr("height", dimensions.height)
+    
 
   const ctr = svg
     .append("g") // <g>
@@ -215,7 +217,7 @@ async function draw2() {
       `translate(${dimensions.margins}, ${dimensions.margins})`
     );
 
-  const tooltip = d3.select("#tooltip");
+  const tooltip = d3.select("#tooltip2");
   // console.log(tooltip);
   const tooltipDot = ctr
     .append("circle")
@@ -314,11 +316,14 @@ async function draw2() {
   ctr.select(".domain").remove();
   ctr.selectAll(".tick line").remove();
 
-  const xAxis = d3.axisBottom(xScale).tickFormat((date) => {
-    const day = formatDay(date);
-    const dayOfMonth = formatDate(date);
-    return day;
-  });
+  const xAxis = d3
+    .axisBottom(xScale)
+    .ticks(5)
+    .tickFormat((date) => {
+      const day = formatDay(date);
+      const dayOfMonth = formatDate(date);
+      return day;
+    });
 
   const gXAxis = ctr
     .append("g")
@@ -361,11 +366,20 @@ async function draw2() {
     .attr("class", "grid-line")
     .attr("x1", (d) => xScale(xAccessor(d)))
     .attr("x2", (d) => xScale(xAccessor(d)))
-    .attr("y1", 0)
+    .attr("y1", 60)
     .attr("y2", dimensions.ctrHeight)
     .attr("stroke", "lightgrey")
-    .attr("stroke-dasharray", "3,3");
+    .attr("stroke-dasharray", "4,4");
 
+  // gXAxis.selectAll(".tick")
+  // .append("line")
+  // .attr("class", "grid-line")
+  // .attr("x1", 0)
+  // .attr("x2", 0)
+  // .attr("y1", 0)
+  // .attr("y2", dimensions.ctrHeight)
+  // .attr("stroke", "red")
+  // .attr("stroke-dasharray", "3,3");
   ctr
     .append("rect")
     .attr("width", dimensions.ctrWidth)
@@ -390,23 +404,24 @@ async function draw2() {
         .raise();
 
       tooltip
-        .style("display", "block")
+        .style("display", "flex")
         .style("top", yScale(yAccessor(stock)) - 20 + "px")
         .style("left", xScale(xAccessor(stock)) + "px");
 
-      tooltip.select(".price").text(`$${yAccessor(stock)}`);
+      tooltip.select(".price2").text(`$${yAccessor(stock)}`);
+
       const dateFormatter = d3.timeFormat("%B %-d, %Y");
 
       tooltip
-        .select(".date")
+        .select(".date2")
         .text(`${dateFormatter(xAccessor(stock))}`)
+        .style("opacity", 0.7)
         .on("mouseleave", function (event) {
           tooltipDot.style("opacity", 0);
 
           tooltip.style("display", "none");
         });
     });
-  
 }
 
 // draw();

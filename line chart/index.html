@@ -5,6 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>D3 Line Chart</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 
@@ -14,14 +18,34 @@
       <div class="price"></div>
       <div class="date"></div>
     </div>
-  </div>  
+  </div>
   <!-- line chart 2  -->
-  <div id="chart2">
-    <div id="tooltip2">
-      <div class="price"></div>
-      <div class="date"></div>
+
+  <div id="main-div1">
+    <div id="chart2">
+
+      <div class="Overall-Performance">Overall Performance</div>
+
+      <div id="tooltip2">
+        <div class="price2"></div>
+        <div class="date2"></div>
+      </div>
+
     </div>
-  </div> 
+
+        <!-- best-Today -->
+        <div  class="best-Today" >
+          <div class="main-text-price">
+              <p>Best</p>
+              <div>$45.00</div>
+          </div>
+          <div class="main-text-price">
+              <p>Today</p>
+              <div>$90.00</div>
+          </div>
+      </div>
+  </div>
+
   <script src="https://d3js.org/d3.v6.js"></script>
   <script src="app.js"></script>
 </body>
