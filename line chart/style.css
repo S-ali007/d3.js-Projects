@@ -1,7 +1,7 @@
 body{
   background-color: #EAEBF1;
-  /* display: flex;
-  gap: 21px; */
+  display: flex;
+  gap: 21px;
 }
 
 #chart{
@@ -22,11 +22,24 @@ body{
   pointer-events: none;
 }
 
+
 .price {
   font-weight: bold;
 }
 
 #main-div1{
+  /* margin: 25px auto;
+  width: 600px;
+  position: relative; */
+  font-family: "Inter", sans-serif;
+  max-width: 600px;
+  width: 100%;
+  padding: 61px 0px;
+  border: 2px solid #fff;
+  border-radius: 30px;
+  background-color: #fff;
+}
+#main-div2{
   /* margin: 25px auto;
   width: 600px;
   position: relative; */
@@ -79,7 +92,26 @@ p{
   width: 100%;
 }
 
+#tooltip3 {
+  border: 1px solid #ccc;
+  position: relative;
+  padding: 10px;
+  background-color: #fff;
+  display: none;
+  pointer-events: none;
+  gap: 11px;
+  border-radius: 12px;
+  font-family: "Inter", sans-serif;
+  font-size: 26px;
+  font-weight: 500;
+  max-width: 325px;
+  width: 100%;
+}
 .price2 {
+  font-weight: bold;
+  color: #314CFF;
+}
+.price3 {
   font-weight: bold;
   color: #314CFF;
 }

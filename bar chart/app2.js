@@ -314,7 +314,7 @@ svg4
   .selectAll("text")
   .style("fill", "#000000")
   .style("font-size", "28px")
-  .style("font-weight","500")
+  .style("font-weight", "500")
   .style("opacity", 0.5)
   .attr("dy", "42px");
 // .attr("transform", "rotate(-45)");
@@ -322,3 +322,157 @@ svg4
 // Remove y-axis lines and ticks
 svg4.select(".domain").remove();
 svg4.selectAll(".tick line").remove();
+
+// -----------------------------------------chart 5
+const data5 = [
+  { yAxisvalue: "$55", xAxisvalue: 10, color: "#E9ECF1" },
+  { yAxisvalue: "$65", xAxisvalue: 11, color: "#E9ECF1" },
+  { yAxisvalue: "$75", xAxisvalue: 12, color: "#E9ECF1" },
+  { yAxisvalue: "$65", xAxisvalue: 13, color: "#E9ECF1" },
+  { yAxisvalue: "$85", xAxisvalue: 14, color: "#3A4DE9" },
+  { yAxisvalue: "$75", xAxisvalue: 15, color: "#E9ECF1" },
+];
+
+// SVG dimensions
+const width5 = 680;
+const height5 = 350;
+const margin5 = { top: 10, right: 10, bottom: 60, left: 50 };
+
+// Create SVG element
+const svg5 = d3
+  .select("#bar-chart5")
+  .attr("width", width5)
+  .attr("height", height3);
+
+// Create x scale
+const xScale5 = d3
+  .scaleBand()
+  .domain(data5.map((d) => d.xAxisvalue))
+  .range([margin5.left, width5 - margin5.right])
+  .padding(0.9);
+
+// Create y scale
+const yScale5 = d3
+  .scaleLinear()
+  .domain([40, d3.max(data5, (d) => parseFloat(d.yAxisvalue.replace("$", "")))])
+  .nice()
+  .range([height5 - margin5.bottom, margin5.top]);
+
+// Create bars
+svg5
+  .selectAll("rect")
+  .data(data5)
+  .enter()
+  .append("rect")
+  .attr("class", "bar5")
+  .attr("x", (d) => xScale5(d.xAxisvalue))
+  .attr("y", (d) => yScale5(parseFloat(d.yAxisvalue.replace("$", ""))))
+  .attr("width", "31px")
+  .attr(
+    "height",
+    (d) =>
+      height5 -
+      margin5.bottom -
+      yScale5(parseFloat(d.yAxisvalue.replace("$", "")))
+  )
+  .attr("rx", 18)
+  .attr("ry", 18)
+  .style("fill", (d) => d.color);
+
+// Add x-axis
+const xAxis5 = d3.axisBottom(xScale5);
+svg5
+  .append("g")
+  .attr("transform", `translate(0, ${height5 - margin5.bottom})`)
+  // .call(xAxis5)
+  .selectAll(".tick text")
+  .attr("dy", "40px")
+  .style("opacity", 0.5)
+  .style("font-size", "28px"); // Set font size for x-axis text
+
+// Add y-axis
+const yAxis5 = d3
+  .axisLeft(yScale5)
+  .ticks(2) // Set the number of ticks
+  .tickFormat(d3.format("$,.0f")); // Format the tick values
+svg5
+  .append("g")
+  .attr("transform", `translate(${margin5.left}, 0)`)
+  .call(yAxis5)
+  .selectAll(".tick line")
+  .remove(); // Remove y-axis tick lines
+
+const gridlines5 = svg5
+  .selectAll("line.horizontal-grid")
+  .data([40, 80, 60])
+  .enter()
+  .append("line")
+  .attr("class", "horizontal-grid")
+  .attr("x1", margin5.left)
+  .attr("y1", (d) => yScale5(d))
+  .attr("x2", width5 - margin5.right)
+  .attr("y2", (d) => yScale5(d))
+  .style("stroke", "gray")
+  .style("stroke-width", 0.7)
+  .style("stroke-dasharray", "5")
+  .style("opacity", 0.5);
+
+svg5
+  .selectAll(".tick text")
+  .style("fill", "black")
+
+  .style("font-size", "24px");
+
+// Remove y-axis domain line
+svg5.selectAll(".domain").remove();
+svg5.selectAll(".tick line").remove();
+
+// Custom Tooltip
+// const tooltip = d3.select("#tooltip5")
+
+//   .style("opacity", 0);
+
+// svg5.selectAll(".bar5")
+//   .on("mouseover", function(event, d) {
+//     const xPosition = parseFloat(d3.select(this).attr("x")) + xScale5.bandwidth() / 2;
+//     const yPosition = parseFloat(d3.select(this).attr("y")) + 15;
+
+//     tooltip.transition()
+//       .duration(200)
+//       .style("opacity", .9);
+
+//     tooltip.html(`<strong>X Value:</strong> ${d.xAxisvalue}<br><strong>Y Value:</strong> ${d.yAxisvalue}`)
+//       .style("left", xPosition + "px")
+//       .style("top", yPosition + "px");
+//   })
+//   .on("mouseout", function() {
+//     tooltip.transition()
+//       .duration(500)
+//       .style("opacity", 10);
+//   });
+
+// Custom Tooltip
+const tooltip = d3.select("#tooltip5").style("opacity", 0);
+
+svg5
+  .selectAll(".bar5")
+  .on("mouseover", function (event, d) {
+    tooltip.transition().duration(200).style("opacity", 0.9);
+
+    // Get mouse coordinates
+    const mouseX = event.pageX;
+    console.log(mouseX);
+
+    const mouseY = event.pageY;
+    console.log(mouseY);
+    // Position the tooltip relative to the mouse position
+    tooltip
+      .style("left", mouseX + 10 + "px")
+      .style("top", mouseY + 10 + "px")
+      .html(
+        `<strong style="color: #3A4DE9;">Views:</strong> ${d.xAxisvalue} <strong>Y Value:</strong> ${d.yAxisvalue}`
+      );
+  })
+  .on("mouseout", function () {
+    tooltip.transition().duration(500).style("opacity", 0);
+  });
