@@ -1,15 +1,22 @@
-body{
-  background-color: #EAEBF1;
-  display: flex;
-  gap: 21px;
+body {
+  background-color: #eaebf1;
 }
-#main-div1{
+#all-barcharts{
+  display: flex;
+  gap: 40px;
+  max-width: 3950px;
+  width: 100%;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  justify-content: center;
+}
+#main-div1 {
   padding: 40px;
   border: 2px solid #fff;
   border-radius: 30px;
   background-color: #fff;
 }
-#main-div2{
+#main-div2 {
   padding-top: 74px;
   padding-bottom: 38px;
   border: 2px solid fff;
@@ -17,9 +24,9 @@ body{
   background-color: #fff;
   display: flex;
   flex-direction: column;
- align-items: center;
+  align-items: center;
 }
-#main-div3{
+#main-div3 {
   padding-top: 74px;
   padding-bottom: 38px;
   border: 2px solid fff;
@@ -27,11 +34,11 @@ body{
   background-color: #fff;
   display: flex;
   flex-direction: column;
- align-items: center;
- padding-left: 31px;
- padding-right: 55px;
+  align-items: center;
+  padding-left: 31px;
+  padding-right: 55px;
 }
-#main-div4{
+#main-div4 {
   padding-top: 74px;
   padding-bottom: 38px;
   border: 2px solid fff;
@@ -39,9 +46,9 @@ body{
   background-color: #fff;
   display: flex;
   flex-direction: column;
- align-items: center;
+  align-items: center;
 }
-#main-div5{
+#main-div5 {
   padding-top: 74px;
   padding-right: 60px;
   padding-left: 39px;
@@ -54,48 +61,41 @@ body{
   justify-content: space-between;
   padding-bottom: 47px;
 }
-#bar-chart2{
+#bar-chart2 {
   margin-top: 127px;
-  
 }
-#bar-chart3{
+#bar-chart3 {
   margin-top: 87px;
-
-  
 }
-#bar-chart4{
+#bar-chart4 {
   margin-top: 69px;
-
-  
 }
-#bar-chart5{
+#bar-chart5 {
   margin-top: 140px;
-
-  
 }
-.div2{
+.div2 {
   margin-top: 10px;
   font-family: "Inter", sans-serif;
   font-size: 26px;
   font-weight: 500;
   line-height: 31px;
 }
-.detail-btn{
+.detail-btn {
   max-width: 432px;
   width: 100%;
   margin-top: 32px;
-  background-color: #D5E5FF;
+  background-color: #d5e5ff;
   padding: 31px 169px;
   font-size: 28px;
   font-family: "Inter", sans-serif;
   font-weight: 600;
-  color: #3A4DE9;
+  color: #3a4de9;
   line-height: 33.8px;
   border-radius: 10px;
-  border: #D5E5FF;
+  border: #d5e5ff;
   cursor: pointer;
 }
-.date-heading{
+.date-heading {
   font-family: "Inter", sans-serif;
   font-weight: 500;
   font-size: 28px;
@@ -105,9 +105,8 @@ body{
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  
 }
-.date-section2{
+.date-section2 {
   font-family: "Inter", sans-serif;
   font-weight: 600;
   line-height: 41px;
@@ -120,7 +119,7 @@ body{
   align-items: center;
   gap: 5px;
 }
-.date-section4{
+.date-section4 {
   font-family: "Inter", sans-serif;
   font-weight: 600;
   line-height: 41px;
@@ -133,16 +132,15 @@ body{
   align-items: center;
   gap: 5px;
 }
-.date{
+.date {
   font-family: "Inter", sans-serif;
   font-size: 28px;
   font-weight: 400;
   line-height: 33.89px;
   text-align: left;
   opacity: 0.5;
-  
 }
-.main-text-price{
+.main-text-price {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -150,18 +148,17 @@ body{
   /* border-bottom:1px solid #AFAFAF; */
   border-bottom: inset;
 }
-.main-text-price2{
+.main-text-price2 {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
 }
-p{
+p {
   opacity: 50%;
 }
 
-.monthhourmin{
+.monthhourmin {
   font-family: "Inter", sans-serif;
   font-size: 60px;
   font-weight: 600;
@@ -170,7 +167,6 @@ p{
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
 
 #tooltip5 {
@@ -185,5 +181,4 @@ p{
   font-family: "Inter", sans-serif;
   font-size: 22px;
   font-weight: 600;
-  
 }

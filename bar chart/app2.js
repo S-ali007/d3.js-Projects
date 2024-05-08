@@ -1,4 +1,11 @@
-const data = [
+const data1 = [
+  { yAxisvalue: 10, xAxisvalue: 10, color: "#3A4DE9" },
+  { yAxisvalue: 30, xAxisvalue: 11, color: "#3A4DE9" },
+  { yAxisvalue: 20, xAxisvalue: 12, color: "#3A4DE9" },
+  { yAxisvalue: 40, xAxisvalue: 13, color: "#3A4DE9" },
+  { yAxisvalue: 35, xAxisvalue: 14, color: "#FB975B" },
+];
+const datanew = [
   { yAxisvalue: 20, xAxisvalue: 10, color: "#3A4DE9" },
   { yAxisvalue: 40, xAxisvalue: 11, color: "#3A4DE9" },
   { yAxisvalue: 20, xAxisvalue: 12, color: "#3A4DE9" },
@@ -13,10 +20,11 @@ const margin = { top: 10, right: 10, bottom: 40, left: 10 };
 // const barWidth = 12;
 
 // Create SVG element
-const svg = d3.select("#bar-chart").attr("width", width);
+const svg = d3.select("#bar-chart").attr("viewBox", `0 0 ${width} ${height}`);
+
 // Extract min and max xAxisvalue
-const xMin = d3.min(data, (d) => d.xAxisvalue);
-const xMax = d3.max(data, (d) => d.xAxisvalue);
+const xMin = d3.min(data1, (d) => d.xAxisvalue);
+const xMax = d3.max(data1, (d) => d.xAxisvalue);
 
 // Create x scale
 const xScale = d3
@@ -28,23 +36,8 @@ const xScale = d3
 // Create y scale
 const yScale = d3
   .scaleLinear()
-  .domain([0, d3.max(data, (d) => d.yAxisvalue)])
+  .domain([0, d3.max(data1, (d) => d.yAxisvalue)])
   .range([height - margin.bottom, margin.top]);
-
-// Create bars
-svg
-  .selectAll("rect")
-  .data(data)
-  .enter()
-  .append("rect")
-  .attr("class", "bar")
-  .attr("x", (d) => xScale(d.xAxisvalue))
-  .attr("y", (d) => yScale(d.yAxisvalue))
-  .attr("width", "12px")
-  .attr("height", (d) => height - margin.bottom - yScale(d.yAxisvalue))
-  .attr("rx", 5)
-  .attr("ry", 5)
-  .style("fill", (d) => d.color);
 
 // Add x-axis
 const xAxis = d3.axisBottom(xScale);
@@ -86,6 +79,27 @@ svg
   .style("stroke-dasharray", "5")
   .style("opacity", 0.5);
 
+function update(data) {
+  // Create bars
+  const bars = svg.selectAll("rect").data(data);
+  bars
+    .enter()
+    .append("rect")
+    .merge(bars)
+    .transition()
+    .duration(1000)
+    .attr("class", "bar")
+    .attr("x", (d) => xScale(d.xAxisvalue))
+    .attr("y", (d) => yScale(d.yAxisvalue))
+    .attr("width", "12px")
+    .attr("height", (d) => height - margin.bottom - yScale(d.yAxisvalue))
+    .attr("rx", 5)
+    .attr("ry", 5)
+    .style("fill", (d) => d.color);
+}
+
+update(data1);
+
 // --------------------------------------------------------------------------chart2
 const data2 = [
   { yAxisvalue: 20, xAxisvalue: "M", color: "#3A4DE9" },
@@ -106,7 +120,9 @@ const height2 = 320;
 const margin2 = { top: 10, right: 10, bottom: 40, left: 10 };
 
 // Create SVG element
-const svg2 = d3.select("#bar-chart2").attr("width", width2);
+const svg2 = d3
+  .select("#bar-chart2")
+  .attr("viewBox", `0 0 ${width2} ${height2}`);
 
 // Extract unique xAxisvalues
 const xValues2 = data2.map((d) => d.xAxisvalue);
@@ -134,7 +150,31 @@ svg2
   .attr("height", (d) => height2 - margin2.bottom - yScale2(d.yAxisvalue))
   .attr("rx", 18)
   .attr("ry", 18)
-  .style("fill", (d) => d.color);
+  .style("fill", (d) => d.color)
+
+  // no bar at the beginning thus:
+  .attr("height", function (d) {
+    return height2 - yScale2(0);
+  }) // always equal to 0
+  .attr("y", function (d) {
+    return yScale2(0);
+  });
+
+// Animation
+svg2
+  .selectAll("rect")
+  .transition()
+  .duration(1000)
+  .attr("y", function (d) {
+    return yScale2(d.yAxisvalue);
+  })
+  .attr("height", function (d) {
+    return height2 - yScale2(d.yAxisvalue);
+  })
+  .delay(function (d, i) {
+    console.log(i);
+    return i * 400;
+  });
 
 // Add x-axis
 const xAxis2 = d3.axisBottom(xScale2);
@@ -147,7 +187,7 @@ svg2
   .style("fill", "#000000")
   .style("font-size", "28px")
   .style("opacity", 0.5)
-  .attr("dy", "42px");
+  .attr("dy", "90px");
 // .attr("transform", "rotate(-45)");
 
 // Remove y-axis lines and ticks
@@ -169,7 +209,9 @@ const height3 = 360;
 const margin3 = { top: 10, right: 10, bottom: 60, left: 50 };
 
 // Create SVG element
-const svg3 = d3.select("#bar-chart3").attr("width", width3);
+const svg3 = d3
+  .select("#bar-chart3")
+  .attr("viewBox", `0 0 ${width3} ${height3}`);
 // .attr("height", height3);
 
 // Create x scale
@@ -274,7 +316,9 @@ const height4 = 320;
 const margin4 = { top: 10, right: 10, bottom: 40, left: 10 };
 
 // Create SVG element
-const svg4 = d3.select("#bar-chart4").attr("width", width4);
+const svg4 = d3
+  .select("#bar-chart4")
+  .attr("viewBox", `0 0 ${width4} ${height4}`);
 
 // Extract unique xAxisvalues
 const xValues4 = data4.map((d) => d.xAxisvalue);
@@ -297,12 +341,35 @@ svg4
   .append("rect")
   .attr("class", "bar")
   .attr("x", (d) => xScale4(d.xAxisvalue))
-  .attr("y", (d) => yScale4(d.yAxisvalue))
+  // .attr("y", (d) => yScale4(d.yAxisvalue))
   .attr("width", "68px")
-  .attr("height", (d) => height4 - margin4.bottom - yScale4(d.yAxisvalue))
+  // .attr("height", (d) => height4 - margin4.bottom - yScale4(d.yAxisvalue))
   .attr("rx", 18)
   .attr("ry", 18)
-  .style("fill", (d) => d.color);
+  .style("fill", (d) => d.color)
+  // no bar at the beginning thus:
+  .attr("height", function (d) {
+    return height4 - margin4.bottom - yScale4(0);
+  }) // always equal to 0
+  .attr("y", function (d) {
+    return yScale4(0);
+  });
+
+// Animation
+svg4
+  .selectAll("rect")
+  .transition()
+  .duration(1200)
+  .attr("y", function (d) {
+    return yScale4(d.yAxisvalue);
+  })
+  .attr("height", function (d) {
+    return height4 - margin4.bottom - yScale4(d.yAxisvalue);
+  })
+  .delay(function (d, i) {
+    console.log(i);
+    return i * 600;
+  });
 
 // Add x-axis
 const xAxis4 = d3.axisBottom(xScale4);

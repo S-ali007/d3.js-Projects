@@ -14,25 +14,26 @@
 </head>
 
 <body>
-
+<div id="all-barcharts">
     <!-- Container for the bar chart -->
     <div style="max-width:680px; width: 100%; " id="main-div1">
         <div class="date-section">
-            <div><svg width="18" height="34" viewBox="0 0 18 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+            <button onclick="update(data1)"> <svg width="18" height="34" viewBox="0 0 18 34" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
                     <path opacity="0.5"
                         d="M16.0625 1.86426L2.21397 15.7132C1.43294 16.4943 1.43296 17.7606 2.214 18.5416L16.0625 32.3901"
                         stroke="black" stroke-width="3" stroke-linecap="round" />
-                </svg>
-            </div>
+                </svg></button>
+
             <h1 class="date-heading">March 2023</h1>
-            <div>
+            <button onclick="update(datanew)">
                 <svg width="18" height="34" viewBox="0 0 18 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path opacity="0.5"
                         d="M1.80078 1.86426L15.6493 15.7132C16.4303 16.4943 16.4303 17.7606 15.6493 18.5416L1.80078 32.3901"
                         stroke="black" stroke-width="3" stroke-linecap="round" />
                 </svg>
-
-            </div>
+            </button>
         </div>
         <svg id="bar-chart" width="600px" height="400px"></svg>
         <div class="div2">
@@ -117,16 +118,16 @@
 
         </div>
         <div id="tooltip5">
-            
-          </div>
-        <svg id="bar-chart5" width="680px" ></svg>
+
+        </div>
+        <svg id="bar-chart5" width="680px"></svg>
         <button class="detail-btn">
             Details
         </button>
 
     </div>
     <script src="app2.js"></script>
-
+</div>
 </body>
 
 </html>

@@ -2,13 +2,13 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>D3 Line Chart</title>
-  <link rel="stylesheet" href="./style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 
@@ -23,46 +23,154 @@
 
   <div id="main-div1">
     <div id="chart2">
-
       <div class="Overall-Performance">Overall Performance</div>
 
       <div id="tooltip2">
         <div class="price2"></div>
         <div class="date2"></div>
       </div>
-
     </div>
 
-        <!-- best-Today -->
-        <div  class="best-Today" >
-          <div class="main-text-price">
-              <p>Best</p>
-              <div>$45.00</div>
-          </div>
-          <div class="main-text-price">
-              <p>Today</p>
-              <div>$90.00</div>
-          </div>
+    <!-- best-Today -->
+    <div class="best-Today">
+      <div class="main-text-price">
+        <p>Best</p>
+        <div>$45.00</div>
       </div>
-
-
-      
+      <div class="main-text-price">
+        <p>Today</p>
+        <div>$90.00</div>
+      </div>
+    </div>
   </div>
 
   <!-- Heart Rate Measurement -->
   <div id="main-div2">
     <div id="chart3">
-
       <div class="Overall-Performance">Heart Rate Measurement</div>
 
       <div id="tooltip3">
-        <div class="price3"></div>
-        <div class="date3"></div>
+        <div class="subject3"></div>
+        <div class="measurment-no"></div>
+        <div class="heartRate"></div>
       </div>
+    </div>
+    <!-- main-content -->
+    <div class="main-contentcolorsmile">
+      <!-- color gaols -->
+      <div class="goal-color">
+        <div class="goal-colorgreen">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="11.9941" cy="11.8945" r="11.873" fill="#43B077" />
+          </svg>
+
+          <div class="goal">
+            <span>Goal </span>
+            <span> 83bpm</span>
+          </div>
+        </div>
+        <div class="goal-colorblue">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="11.9941" cy="11.8945" r="11.873" fill="#3549F8" />
+          </svg>
+
+          <div class="goal">
+            <span>Current </span>
+            <span> 50bpm</span>
+          </div>
+        </div>
+      </div>
+      <!-- smile logo -->
+
+      <div class="smile" style="display: flex; align-items: center; gap: 29px;">
+        <svg width="87" height="87" viewBox="0 0 87 87" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="43.5059" cy="43.6152" r="43.3496" fill="#E9ECF1" />
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M43.5049 64.043C54.1455 64.043 62.7715 55.417 62.7715 44.7764C62.7715 34.1357 54.1455 25.5098 43.5049 25.5098C32.8642 25.5098 24.2383 34.1357 24.2383 44.7764C24.2383 55.417 32.8642 64.043 43.5049 64.043ZM38.123 43.9019C39.5679 43.9019 40.7393 42.7305 40.7393 41.2856C40.7393 39.8408 39.5679 38.6694 38.123 38.6694C36.6782 38.6694 35.5068 39.8408 35.5068 41.2856C35.5068 42.7305 36.6782 43.9019 38.123 43.9019ZM51.5029 41.2856C51.5029 42.7305 50.3316 43.9019 48.8867 43.9019C47.4418 43.9019 46.2705 42.7305 46.2705 41.2856C46.2705 39.8408 47.4418 38.6694 48.8867 38.6694C50.3316 38.6694 51.5029 39.8408 51.5029 41.2856ZM43.5049 55.7114C47.9221 55.7114 51.5029 52.0564 51.5029 47.6392H35.5068C35.5068 52.0564 39.0877 55.7114 43.5049 55.7114Z"
+            fill="#3A4DE9" />
+        </svg>
+
+        <div>
+          <div style="font-size: 31px; font-weight: 600; line-height: 37px;">
+            You’re doing good!
+
+          </div>
+          <div style="font-size: 27px; font-weight: 400; line-height: 32px; opacity: 50%;">
+            You almost reached your goal
+          </div>
+        </div>
+      </div>
+
 
     </div>
   </div>
+  <!-- Average Time -->
+  <div id="main-div3">
+    <div id="chart4">
+      <div class="main-averageTimechart4">
+        <div class="AverageTime">Average Time</div>
 
+        <div class="steps-chart4">1,000 steps</div>
+      </div>
+
+      <div id="tooltip4">
+        <div class="subject3"></div>
+        <div class="measurment-no"></div>
+        <div class="heartRate"></div>
+      </div>
+    </div>
+
+    <div id="set-reminder">
+      <div>
+        <div class="set-reminder-text">Set reminder</div>
+        <div class="remind">Remind me when I reach my goal</div>
+      </div>
+    </div>
+  </div>
+  <!-- Product A $3,649 -->
+  <div id="main-div4">
+
+    <!-- main div for product content -->
+    <div>
+      <div class="main-averageTimechart5">
+        <div class="steps-chart4">$3,649</div>
+      </div>
+      <!-- color gaols -->
+      <div class="productcolor">
+        <div class="colorblue">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="11.9941" cy="11.8945" r="11.873" fill="#3549F8" />
+          </svg>
+
+          <div class="Product A">
+            <span>Product A </span>
+          </div>
+        </div>
+        <div class="colororange">
+          <div class="colororange">
+            <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12.5815" cy="12.1831" r="11.9995" fill="#FF915F" />
+            </svg>
+
+            <div class="Product B">
+              <span>Product B</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="tooltip5">
+      <div class="subject3"></div>
+      <div class="measurment-no"></div>
+      <div class="heartRate"></div>
+    </div>
+    <div id="chart5"></div>
+    <button class="detail-btn">
+      Details
+    </button>
+  </div>
+  
   <script src="https://d3js.org/d3.v6.js"></script>
   <script src="app.js"></script>
 </body>
