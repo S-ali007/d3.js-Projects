@@ -1,0 +1,60 @@
+body {
+  background-color: #eaebf1;
+  max-width: fit-content;
+  width: 100%;
+  display: flex;
+  gap: 100px;
+  margin: 0 auto;
+  font-family: "Inter", sans-serif;
+}
+
+.detail-btn {
+  /* max-width: 432px;
+  width: 100%; */
+  margin-top: 32px;
+  background-color: #d5e5ff;
+  padding: 31px 169px;
+  font-size: 28px;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  color: #3a4de9;
+  line-height: 33.8px;
+  border-radius: 10px;
+  border: #d5e5ff;
+  cursor: pointer;
+}
+
+#main-div1 {
+  padding-bottom: 40px;
+  border: 2px solid #fff;
+  border-radius: 30px;
+  background-color: #fff;
+  /* max-width: fit-content; */
+  /* width: 100%; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#main-div2 {
+  padding: 40px;
+  border: 2px solid #fff;
+  border-radius: 30px;
+  background-color: #fff;
+  max-width: fit-content;
+  width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#sad-emoji{
+  position: absolute;
+  margin-top: 250px;
+  display: none;
+}
+#happy-emoji{
+  position: absolute;
+  margin-top: 250px;
+  display: none;
+}

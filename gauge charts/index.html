@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gauge Chart</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+
+<body>
+  <!-- Grace’s Score -->
+  <div id="main-div1">
+
+    <!-- <div id="tooltip5">
+      <div class="subject3"></div>
+      <div class="measurment-no"></div>
+      <div class="heartRate"></div>
+    </div> -->
+
+
+    <div id="happy-emoji">
+      <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="59.979" cy="59.6997" r="59.4556" fill="#E9ECF3" />
+        <path fill-rule="evenodd" clip-rule="evenodd"
+          d="M59.9756 87.7169C74.5697 87.7169 86.4005 75.8861 86.4005 61.292C86.4005 46.698 74.5697 34.8672 59.9756 34.8672C45.3816 34.8672 33.5508 46.698 33.5508 61.292C33.5508 75.8861 45.3816 87.7169 59.9756 87.7169ZM52.594 60.0921C54.5757 60.0921 56.1822 58.4856 56.1822 56.5038C56.1822 54.5221 54.5757 52.9156 52.594 52.9156C50.6123 52.9156 49.0058 54.5221 49.0058 56.5038C49.0058 58.4856 50.6123 60.0921 52.594 60.0921ZM70.9449 56.5038C70.9449 58.4856 69.3384 60.0921 67.3566 60.0921C65.3749 60.0921 63.7684 58.4856 63.7684 56.5038C63.7684 54.5221 65.3749 52.9156 67.3566 52.9156C69.3384 52.9156 70.9449 54.5221 70.9449 56.5038ZM59.9754 76.2903C66.0338 76.2903 70.9451 71.2772 70.9451 65.2189H49.0058C49.0058 71.2772 53.9171 76.2903 59.9754 76.2903Z"
+          fill="#3A4DE9" />
+      </svg>
+    </div>
+
+    <div id="sad-emoji">
+      <svg width="120" height="120" viewBox="0 0 82 83" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="41" cy="41.5" rx="41" ry="41.5" fill="#E9ECF3" />
+        <path fill-rule="evenodd" clip-rule="evenodd"
+          d="M40.7594 61.1702C50.8818 61.1702 59.0876 52.8969 59.0876 42.6912C59.0876 32.4855 50.8818 24.2121 40.7594 24.2121C30.637 24.2121 22.4312 32.4855 22.4312 42.6912C22.4312 52.8969 30.637 61.1702 40.7594 61.1702ZM35.6395 41.852C37.014 41.852 38.1283 40.7286 38.1283 39.3428C38.1283 37.9569 37.014 36.8335 35.6395 36.8335C34.265 36.8335 33.1507 37.9569 33.1507 39.3428C33.1507 40.7286 34.265 41.852 35.6395 41.852ZM48.3676 39.3428C48.3676 40.7286 47.2534 41.852 45.8788 41.852C44.5043 41.852 43.39 40.7286 43.39 39.3428C43.39 37.9569 44.5043 36.8335 45.8788 36.8335C47.2534 36.8335 48.3676 37.9569 48.3676 39.3428Z"
+          fill="#3A4DE9" />
+        <path d="M48 52C48 52 46 48 41 48C36 48 34 52 34 52" fill="#3A4DE9" />
+        <path d="M48 52C48 52 46 48 41 48C36 48 34 52 34 52" stroke="white" stroke-linecap="round"
+          stroke-linejoin="round" />
+      </svg>
+
+    </div>
+
+    <svg id="gauge1"></svg>
+  
+    <button class="detail-btn">
+      Details
+    </button>
+  </div>
+  <div id="main-div2">
+
+    <!-- <div id="tooltip5">
+      <div class="subject3"></div>
+      <div class="measurment-no"></div>
+      <div class="heartRate"></div>
+    </div> -->
+
+    <div>
+
+    </div>
+    <svg id="gauge2" width="400" height="300"></svg>
+
+    <button class="detail-btn">
+      Details
+    </button>
+  </div>
+
+
+  <script src="app.js"></script>
+</body>
+
+</html>
