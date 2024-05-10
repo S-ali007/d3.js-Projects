@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Circular Chart</title>
+  <style>
+    /* Add any styles if needed */
+  </style>
+</head>
+<body>
+  <svg id="circular-chart" width="300" height="300">
+    <!-- Draw your circular chart here -->
+  </svg>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script>
+    // Define your data
+    const data = 3000; // Monthly income for one person
+
+    // Set up dimensions and radius
+    const width = 300;
+    const height = 300;
+    const radius = Math.min(width, height) / 2;
+
+    // Select the SVG element
+    const svg = d3.select("#circular-chart");
+
+    // Draw a circle as background
+    svg.append("circle")
+      .attr("cx", width / 2)
+      .attr("cy", height / 2)
+      .attr("r", radius)
+      .attr("fill", "#E9ECF1");
+
+    // Define arc generator
+    const arc = d3.arc()
+      .innerRadius(100)
+      .outerRadius(radius);
+
+    // Calculate the end angle of the arc
+    const endAngle = (data / 5000) * Math.PI * 2; // Assuming the maximum value is 5000
+
+    // Draw arc for the income
+    svg.append("path")
+      .attr("d", arc({
+        startAngle: 0,
+        endAngle: endAngle // End angle calculated based on data value
+      }))
+      .attr("fill", "#2B43FF")
+      .attr("transform", `translate(${width / 2}, ${height / 2})`);
+
+    // Add text label for income
+    svg.append("text")
+      .text(`$${data}`)
+      .attr("x", width / 2)
+      .attr("y", height / 2)
+      .attr("dy", "0.3em")
+      .attr("text-anchor", "middle")
+      .attr("alignment-baseline", "middle")
+      .style("font-size", "20px")
+      .style("fill", "black");
+  </script>
+</body>
+</html>

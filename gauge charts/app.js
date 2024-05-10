@@ -1,24 +1,32 @@
 function drawGauge(value) {
-  const width = 681;
+  // Define dimensions
+  const width = 581;
   const height = 550;
-  const margin = 20;
-  const radius = Math.min(width, height) / 2 - margin;
 
+  const radius = Math.min(width, height) / 2;
+
+  // Define data
   const data = {
     value: value,
     min: 0,
     max: 100,
   };
 
+  // Create SVG
   const svg = d3.select("#gauge1").attr("width", width).attr("height", height);
 
-  const gauge = svg.append("g").attr("transform", `translate(${340}, ${120})`);
+  // Create gauge group
+  const gauge = svg
+    .append("g")
+    .attr("transform", `translate(${width / 2}, ${20})`);
 
+  // Define color scale
   const color = d3
     .scaleLinear()
     .domain([0, 50, 100])
     .range(["red", "#2b43ff", "#2b43ff"]);
 
+  // Create background arc
   const backgroundArc = d3
     .arc()
     .innerRadius(radius * 0.85)
@@ -27,12 +35,14 @@ function drawGauge(value) {
     .endAngle(Math.PI / 2)
     .cornerRadius(10);
 
+  // Draw background arc
   gauge
     .append("path")
     .attr("d", backgroundArc)
     .attr("fill", "#E9ECF1")
     .attr("transform", `translate(0, ${radius})`);
 
+  // Create performance arc
   const arc = d3
     .arc()
     .innerRadius(radius * 0.86)
@@ -41,6 +51,7 @@ function drawGauge(value) {
     .endAngle((data.value / data.max) * Math.PI - Math.PI / 2)
     .cornerRadius(10);
 
+  // Draw arc
   gauge
     .append("path")
     .attr("d", arc)
@@ -48,6 +59,7 @@ function drawGauge(value) {
     .attr("stroke-width", 2)
     .attr("transform", `translate(0, ${radius})`);
 
+  // Create SVG with message
   if (data.value <= 50) {
     //   gauge.append("svg")
     //     .attr("width", "220")
@@ -63,6 +75,7 @@ function drawGauge(value) {
 
     emoji.style("display", "block");
 
+    //   // appended text message
     gauge
       .append("text")
       .attr("text-anchor", "middle")
@@ -107,6 +120,7 @@ function drawGauge(value) {
 
     const emoji = d3.select("#happy-emoji");
     emoji.style("display", "block");
+    //   // appended text message
     gauge
       .append("text")
       .attr("text-anchor", "middle")
@@ -120,75 +134,72 @@ function drawGauge(value) {
 
 drawGauge(20);
 
-function drawGauge2(value) {
-  // Define dimensions
-  const width = 400;
-  const height = 300;
-  const margin = 20;
-  const radius = Math.min(width, height) / 2 - margin;
+function drawCircularChart(value) {
+
+
+ // Set up dimensions and radius
+ const width = 471;
+ const height = 471;
+ const radius = 150;
+
 
   // Define data
   const data = {
     value: value,
     min: 0,
-    max: 100,
+    max: 5000,
   };
-  // Create SVG
-  const svg = d3.select("#gauge2").attr("width", width).attr("height", height);
-  // Create gauge group
-  const gauge = svg
-    .append("g")
-    .attr("transform", `translate(${width / 2}, ${height / 2})`);
-  // Define color scale
-  const color = d3
-    .scaleLinear()
-    .domain([0, 50, 100])
-    .range(["red", "#2b43ff", "#2b43ff"]);
-  // Create background arc
-  const backgroundArc = d3
+
+
+ // Select the SVG element
+ const svg = d3.select("#gauge2");
+ const gauge = svg.append("g").attr("transform", `translate(${width/2}, ${20})`);
+
+
+ const backgroundArc = d3
     .arc()
-    .innerRadius(radius * 0.85)
-    .outerRadius(radius * 0.8)
-    .startAngle(-Math.PI / 2)
-    .endAngle(Math.PI / 2)
+    .innerRadius(130 )
+    .outerRadius(radius * 0.75)
+    .startAngle(0)
+    .endAngle(Math.PI * 2)
     .cornerRadius(10);
+
   // Draw background arc
   gauge
     .append("path")
     .attr("d", backgroundArc)
     .attr("fill", "#E9ECF1")
     .attr("transform", `translate(0, ${radius})`);
-  // Create performance arc
-  const arc = d3
-    .arc()
-    .innerRadius(radius * 0.9)
-    .outerRadius(radius * 0.75)
-    .startAngle(-Math.PI / 2)
-    .endAngle((data.value / data.max) * Math.PI - Math.PI / 2)
-    .cornerRadius(10);
-  // Draw arc
-  gauge
-    .append("path")
-    .attr("d", arc)
-    .attr("fill", color(data.value))
-    .attr("stroke-width", 2)
-    .attr("transform", `translate(0, ${radius})`);
 
-  // Create title
-  gauge
-    .append("text")
-    .attr("text-anchor", "middle")
-    .attr("y", -radius * 0.5)
-    .text("Grace’s Score")
-    .style("font-size", "18px");
+  // Define arc generator
+  const arc = d3.arc()
+  .innerRadius(100)
+  .outerRadius(radius)
+  .cornerRadius(10);
+// Calculate the end angle of the arc
+const endAngle = (data.value / 5000) * Math.PI * 2; // Assuming the maximum value is 5000
 
-  // Create value text
-  gauge
-    .append("text")
-    .attr("text-anchor", "middle")
-    .attr("y", radius)
-    .text(`${data.value}%`)
-    .style("font-size", "24px");
+// Draw arc for the income
+svg.append("path")
+  .attr("d", arc({
+    startAngle: 0,
+    endAngle: endAngle // End angle calculated based on data value
+  }))
+  .attr("fill", "#2B43FF")
+  .attr("transform", `translate(${width / 2}, ${radius + 20})`);
+
+// Add text label for income
+svg.append("text")
+  .text(`$${data.value}`)
+  .attr("x", width /2)
+  .attr("y", height /3)
+  .attr("dy", "0.3em")
+  .attr("text-anchor", "middle")
+  .attr("alignment-baseline", "middle")
+  .style("font-size", "28px")
+  .style("fill", "black")
+  
+
 }
 
-drawGauge2(75);
+drawCircularChart(3000);
